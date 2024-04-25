@@ -16,9 +16,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='uk'>
-      <body className={raleway.className}>
+      <body className={`${raleway.className} min-h-screen flex`}>
         <Header />
-        <main>{children}</main>
+        <main className='bg-page_bg flex-grow flex items-center justify-center'>{children}</main>
         <Footer />
       </body>
     </html>
