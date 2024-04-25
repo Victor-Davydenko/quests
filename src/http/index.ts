@@ -1,6 +1,6 @@
 import { IQuest } from '@/interfaces/interfaces';
 
-const getQuests = async ():Promise<IQuest[]> => {
+export const getQuests = async ():Promise<IQuest[]> => {
   const response = await fetch(`${process.env.API_URL}/quests`, { cache: 'no-cache' });
   if (!response.ok) {
     throw new Error('something went wrong!');
@@ -9,4 +9,11 @@ const getQuests = async ():Promise<IQuest[]> => {
   return quests;
 };
 
-export default getQuests;
+export const getSingleQuest = async (id: string):Promise<IQuest> => {
+  const response = await fetch(`${process.env.API_URL}/quests/${id}`);
+  if (!response.ok) {
+    throw new Error('something went wrong!');
+  }
+  const quest = await response.json();
+  return quest;
+};

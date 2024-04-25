@@ -19,3 +19,7 @@ export interface IQuest {
   peopleCount: [ number, number ],
   duration: number
 }
+
+export interface IDictionary {
+  [key: string]: string
+}

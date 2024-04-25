@@ -1,4 +1,4 @@
-import { ICategory, IRoute } from '@/interfaces/interfaces';
+import { ICategory, IDictionary, IRoute } from '@/interfaces/interfaces';
 
 export const routes: IRoute[] = [
   { path: '/', title: 'Квести' },
@@ -16,3 +16,17 @@ export const categories: ICategory[] = [
   { id: 'detective', title: 'Детектив' },
   { id: 'sci-fi', title: 'Sci-fi' },
 ];
+
+export const typeQestDictionary: IDictionary = {
+  horror: 'Жахи',
+  adventures: 'Пригоди',
+  mystic: 'Містика',
+  detective: 'Детектив',
+  'sci-fi': 'Sci-fi',
+};
+
+export const questLevelDictionary: IDictionary = {
+  easy: 'легкий',
+  medium: 'середній',
+  hard: 'складний',
+};
