@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import QuestCard from '@/components/QuestCard';
 import { IQuest } from '@/interfaces/interfaces';
-import getQuests from '@/http';
+import { getQuests } from '@/http';
 
 interface IQuestsProps {
   filter: string | undefined
