@@ -11,9 +11,6 @@ export const getQuests = async ():Promise<IQuest[]> => {
 
 export const getSingleQuest = async (id: string):Promise<IQuest> => {
   const response = await fetch(`${process.env.API_URL}/quests/${id}`);
-  if (!response.ok) {
-    throw new Error('something went wrong!');
-  }
   const quest = await response.json();
   return quest;
 };
