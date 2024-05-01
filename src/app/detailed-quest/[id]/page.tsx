@@ -1,17 +1,22 @@
 import React from 'react';
 import Promo from '@/components/Promo';
 import { getSingleQuest } from '@/http';
+import { notFound } from 'next/navigation';
 
 export async function generateMetadata({ params: { id } }: { params: { id: string } }) {
   const { title, description } = await getSingleQuest(id);
+  const pageTitle = title ? `Квест | ${title}` : 'Не знайдено';
   return {
-    title: `Квест | ${title}`,
+    title: pageTitle,
     description,
   };
 }
 
 const Page = async ({ params: { id } }: { params: { id: string } }) => {
   const singleQuest = await getSingleQuest(id);
+  if (!Object.keys(singleQuest).length) {
+    notFound();
+  }
   const { coverImg } = singleQuest;
   return (
     <section
