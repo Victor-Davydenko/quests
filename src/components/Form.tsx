@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -36,6 +37,15 @@ const Form = () => {
     createOrder(newOrder)
       .then(() => {
         router.back();
+        toast((t) => {
+          t.duration = 2000;
+          t.style = {
+            padding: 0,
+          };
+          return (
+            <div className='flex p-4 text-xl text-orange bg-page_bg'>Замовлення прийнято, наш менеджер вже телефонує вам</div>
+          );
+        });
       })
       .catch((e) => setError(e.message));
   };
