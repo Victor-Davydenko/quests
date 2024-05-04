@@ -19,6 +19,7 @@ const config: Config = {
         text_white: '#E6E6E6',
         text_base: '#F0F0F0',
         grey: '#B8B8B8',
+        overlay: 'rgba(61, 51, 51, .94)',
       },
       boxShadow: {
         card_shadow: '2px 2px 24px 0px #8D50081F',
