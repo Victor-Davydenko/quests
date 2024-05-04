@@ -23,3 +23,23 @@ export interface IQuest {
 export interface IDictionary {
   [key: string]: string
 }
+
+export interface IForm {
+  name: string
+  phone: string
+  numberOfVisitors: number
+  privateDataAgreement: boolean
+}
+
+export type ValidFieldNames =
+  | 'name'
+  | 'phone'
+  | 'numberOfVisitors'
+  | 'privateDataAgreement';
+
+export interface IOrder {
+  name: string
+  peopleCount: number
+  phone: string
+  isLegal: boolean
+}
