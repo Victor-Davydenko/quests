@@ -10,7 +10,7 @@ interface IPromoProps {
 }
 const Promo: FC<IPromoProps> = ({
   quest: {
-    type, description, duration, title, level, peopleCount,
+    id, type, description, duration, title, level, peopleCount,
   },
 }) => {
   const [from, to] = peopleCount;
@@ -33,7 +33,7 @@ const Promo: FC<IPromoProps> = ({
         </li>
       </ul>
       <p className='mb-10'>{description}</p>
-      <ButtonLink href='#'>Забронювати</ButtonLink>
+      <ButtonLink href={`/detailed-quest/${id}/bookQuest`}>Забронювати</ButtonLink>
     </article>
   );
 };
