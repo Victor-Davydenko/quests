@@ -34,20 +34,21 @@ const Form = () => {
       phone: formData.phone,
       isLegal: formData.privateDataAgreement,
     };
-    createOrder(newOrder)
-      .then(() => {
-        router.back();
-        toast((t) => {
-          t.duration = 2000;
-          t.style = {
-            padding: 0,
-          };
-          return (
-            <div className='flex p-4 text-xl text-orange bg-page_bg'>Замовлення прийнято, наш менеджер вже телефонує вам</div>
-          );
-        });
-      })
-      .catch((e) => setError(e.message));
+    try {
+      await createOrder(newOrder);
+      router.back();
+      toast((t) => {
+        t.duration = 2000;
+        t.style = {
+          padding: 0,
+        };
+        return (
+          <div className='flex p-4 text-xl text-orange bg-page_bg'>Замовлення прийнято, наш менеджер вже телефонує вам</div>
+        );
+      });
+    } catch (e) {
+      setError((e as Error).message);
+    }
   };
   if (error) throw new Error(error);
   return (
