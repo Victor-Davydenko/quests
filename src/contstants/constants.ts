@@ -30,3 +30,22 @@ export const questLevelDictionary: IDictionary = {
   medium: 'середній',
   hard: 'складний',
 };
+
+export const defaultMapOptions = {
+  panControl: true,
+  zoomControl: true,
+  mapTypeControl: false,
+  rotateControl: false,
+  clickableIcons: false,
+  fullScreenControl: false,
+};
+
+export const mapContainerStyle = {
+  width: '100%',
+  height: '100%',
+};
+
+export const location = {
+  lat: 49.84196491758953,
+  lng: 24.03192517784678,
+};
