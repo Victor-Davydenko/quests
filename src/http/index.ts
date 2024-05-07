@@ -1,7 +1,7 @@
 import { IOrder, IQuest } from '@/interfaces/interfaces';
 
 export const getQuests = async ():Promise<IQuest[]> => {
-  const response = await fetch(`${process.env.API_URL}/quests`, { cache: 'no-cache' });
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/quests`, { cache: 'no-cache' });
   if (!response.ok) {
     throw new Error('something went wrong!');
   }
@@ -10,14 +10,14 @@ export const getQuests = async ():Promise<IQuest[]> => {
 };
 
 export const getSingleQuest = async (id: string):Promise<IQuest> => {
-  const response = await fetch(`${process.env.API_URL}/quests/${id}`);
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/quests/${id}`);
   const quest = await response.json();
   return quest;
 };
 
 export const createOrder = async (orderData: IOrder) => {
   try {
-    const response = await fetch('http://localhost:3001/orders', {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/orders`, {
       method: 'POST',
       body: JSON.stringify(orderData),
       headers: {
@@ -26,7 +26,7 @@ export const createOrder = async (orderData: IOrder) => {
     });
     const data = await response.json();
     return data;
-  } catch (e: any) {
-    throw new Error(e.message);
+  } catch (e) {
+    throw new Error((e as Error).message);
   }
 };
