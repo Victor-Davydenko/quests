@@ -8,10 +8,10 @@ export const getQuests = async () => {
   return quests;
 };
 
-export const getSingleQuest = async (id: string) => {
+export const getSingleQuest = async (id: number) => {
   const quest = await prisma.quest.findUnique({
     where: {
-      id: +id,
+      id,
     },
   });
   return quest;

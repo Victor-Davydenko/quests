@@ -4,7 +4,12 @@ import { getSingleQuest } from '@/http';
 import { notFound } from 'next/navigation';
 
 export async function generateMetadata({ params: { id } }: { params: { id: string } }) {
-  const singleQuest = await getSingleQuest(id);
+  if (Number.isNaN(+id)) {
+    return {
+      title: 'Не знайдено',
+    };
+  }
+  const singleQuest = await getSingleQuest(+id);
   if (singleQuest === null) {
     return {
       title: 'Не знайдено',
@@ -17,7 +22,10 @@ export async function generateMetadata({ params: { id } }: { params: { id: strin
 }
 
 const Page = async ({ params: { id } }: { params: { id: string } }) => {
-  const singleQuest = await getSingleQuest(id);
+  if (Number.isNaN(+id)) {
+    notFound();
+  }
+  const singleQuest = await getSingleQuest(+id);
   if (singleQuest === null) {
     notFound();
   }
