@@ -1,3 +1,5 @@
+'use server';
+
 import { IOrder } from '@/interfaces/interfaces';
 import prisma from '../../prisma';
 
@@ -17,15 +19,9 @@ export const getSingleQuest = async (id: string) => {
 
 export const createOrder = async (orderData: IOrder) => {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/orders`, {
-      method: 'POST',
-      body: JSON.stringify(orderData),
-      headers: {
-        'Content-Type': 'application/json',
-      },
+    await prisma.order.create({
+      data: orderData,
     });
-    const data = await response.json();
-    return data;
   } catch (e) {
     throw new Error((e as Error).message);
   }
