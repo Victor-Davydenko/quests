@@ -4,17 +4,21 @@ import { getSingleQuest } from '@/http';
 import { notFound } from 'next/navigation';
 
 export async function generateMetadata({ params: { id } }: { params: { id: string } }) {
-  const { title, description } = await getSingleQuest(id);
-  const pageTitle = title ? `Квест | ${title}` : 'Не знайдено';
+  const singleQuest = await getSingleQuest(id);
+  if (singleQuest === null) {
+    return {
+      title: 'Не знайдено',
+    };
+  }
   return {
-    title: pageTitle,
-    description,
+    title: singleQuest.title,
+    description: singleQuest.description,
   };
 }
 
 const Page = async ({ params: { id } }: { params: { id: string } }) => {
   const singleQuest = await getSingleQuest(id);
-  if (!Object.keys(singleQuest).length) {
+  if (singleQuest === null) {
     notFound();
   }
   const { coverImg } = singleQuest;
@@ -22,7 +26,7 @@ const Page = async ({ params: { id } }: { params: { id: string } }) => {
     <section
       className='h-full min-h-screen pt-[150px] w-full'
       style={{
-        backgroundImage: `linear-gradient(0deg, rgba(0, 0, 0, 0.04) 0%, rgba(0, 0, 0, 0.76) 100%), url('${process.env.NEXT_PUBLIC_API_URL}/${coverImg}')`,
+        backgroundImage: `linear-gradient(0deg, rgba(0, 0, 0, 0.04) 0%, rgba(0, 0, 0, 0.76) 100%), url('/${coverImg}')`,
         backgroundSize: 'cover',
       }}
     >
