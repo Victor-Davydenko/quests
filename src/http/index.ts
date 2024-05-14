@@ -1,17 +1,17 @@
-import { IOrder, IQuest } from '@/interfaces/interfaces';
+import { IOrder } from '@/interfaces/interfaces';
+import prisma from '../../prisma';
 
-export const getQuests = async ():Promise<IQuest[]> => {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/quests`, { cache: 'no-cache' });
-  if (!response.ok) {
-    throw new Error('something went wrong!');
-  }
-  const quests = await response.json();
+export const getQuests = async () => {
+  const quests = await prisma.quest.findMany();
   return quests;
 };
 
-export const getSingleQuest = async (id: string):Promise<IQuest> => {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/quests/${id}`);
-  const quest = await response.json();
+export const getSingleQuest = async (id: string) => {
+  const quest = await prisma.quest.findUnique({
+    where: {
+      id: +id,
+    },
+  });
   return quest;
 };
 
