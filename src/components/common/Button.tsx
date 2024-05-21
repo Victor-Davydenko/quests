@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 interface IButton {
   children: string
   className: string
-  disabled: boolean
+  disabled?: boolean
   type: 'submit' | 'button'
   onClick?: () => void
 }

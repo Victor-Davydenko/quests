@@ -2,15 +2,16 @@
 
 import React, { FC } from 'react';
 import { FieldError, UseFormRegister } from 'react-hook-form';
-import { IForm, ValidFieldNames } from '@/interfaces/interfaces';
+import { ValidFieldNames } from '@/interfaces/interfaces';
 
 interface ITextInput {
   id: ValidFieldNames,
   label: string,
   placeholder: string
   error: FieldError | undefined
-  register: UseFormRegister<IForm>
+  register: UseFormRegister<any>
   valueAsNumber?: boolean
+  type?: string
 }
 const TextInput: FC<ITextInput> = ({
   id, label, register, error, valueAsNumber = undefined, ...attrs

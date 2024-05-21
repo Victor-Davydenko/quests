@@ -31,15 +31,34 @@ export interface IForm {
   privateDataAgreement: boolean
 }
 
+export interface ISignUpForm {
+  email: string
+  password: string
+  confirmPassword: string
+}
+
+export interface ISignInForm {
+  email: string
+  password: string
+}
+
 export type ValidFieldNames =
   | 'name'
   | 'phone'
   | 'numberOfVisitors'
-  | 'privateDataAgreement';
+  | 'privateDataAgreement'
+  | 'password'
+  | 'confirmPassword'
+  | 'email';
 
 export interface IOrder {
   name: string
   peopleCount: number
   phone: string
   isLegal: boolean
+}
+
+export interface IUser {
+  email: string
+  password: string
 }
