@@ -108,6 +108,7 @@ const main = async () => {
       data: quests,
     });
     console.log('Database has been seeded. 🌱');
+    prisma.$disconnect();
   } catch (error) {
     throw error;
   }
