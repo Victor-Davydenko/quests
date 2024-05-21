@@ -30,3 +30,5 @@ export const questLevelDictionary: IDictionary = {
   medium: 'середній',
   hard: 'складний',
 };
+
+export const SESSION_COOKIE = 'quest_session';
