@@ -12,6 +12,7 @@ import Loading from '@/app/loading';
 import { ISignInForm } from '@/interfaces/interfaces';
 import { signInValidationSchema } from '@/formValidation/formValidation';
 import { signInUser } from '@/http';
+import Link from 'next/link';
 
 const SignInForm = () => {
   const [error, setError] = useState('');
@@ -48,6 +49,7 @@ const SignInForm = () => {
             Увійти
           </Button>
         )}
+      <Link href='/signup' className='text-text_white font-medium inline-block mt-4'>Не маєш акаунту? Зареєструватися</Link>
     </form>
   );
 };
