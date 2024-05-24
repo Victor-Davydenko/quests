@@ -1,34 +1,17 @@
-import { ICategory, IDictionary, IRoute } from '@/interfaces/interfaces';
+import { ICategory, IRoute } from '@/interfaces/interfaces';
 
 export const routes: IRoute[] = [
-  { path: '/', title: 'Квести' },
-  { path: '/new', title: 'Новачкам' },
-  { path: '/feedbacks', title: 'Відгуки' },
-  { path: '/promo', title: 'Акції' },
-  { path: '/contacts', title: 'Контакти' },
+  { path: '/', title: 'quests' },
+  { path: '/contacts', title: 'contacts' },
 ];
 
 export const categories: ICategory[] = [
-  { id: 'all_quests', title: 'Всі квести' },
-  { id: 'adventures', title: 'Пригоди' },
-  { id: 'horror', title: 'Жахи' },
-  { id: 'mystic', title: 'Містика' },
-  { id: 'detective', title: 'Детектив' },
-  { id: 'sci-fi', title: 'Sci-fi' },
+  { id: 'all_quests', title: 'categories_all_quests' },
+  { id: 'adventures', title: 'adventures' },
+  { id: 'horror', title: 'horror' },
+  { id: 'mystic', title: 'mystic' },
+  { id: 'detective', title: 'detective' },
+  { id: 'sci-fi', title: 'sci_fi' },
 ];
-
-export const typeQestDictionary: IDictionary = {
-  horror: 'Жахи',
-  adventures: 'Пригоди',
-  mystic: 'Містика',
-  detective: 'Детектив',
-  'sci-fi': 'Sci-fi',
-};
-
-export const questLevelDictionary: IDictionary = {
-  easy: 'легкий',
-  medium: 'середній',
-  hard: 'складний',
-};
 
 export const SESSION_COOKIE = 'quest_session';
