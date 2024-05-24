@@ -21,7 +21,7 @@ export async function generateMetadata({ params: { id } }: { params: { id: strin
   };
 }
 
-const Page = async ({ params: { id } }: { params: { id: string } }) => {
+const Page = async ({ params: { id, locale } }: { params: { id: string, locale: string } }) => {
   if (Number.isNaN(+id)) {
     notFound();
   }
@@ -39,7 +39,7 @@ const Page = async ({ params: { id } }: { params: { id: string } }) => {
       }}
     >
       <div className='container mx-auto max-w-[1200px] px-5 flex justify-end text-text_white'>
-        <Promo quest={singleQuest} />
+        <Promo quest={singleQuest} locale={locale} />
       </div>
     </section>
   );
