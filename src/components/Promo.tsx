@@ -11,7 +11,7 @@ interface IPromoProps {
 }
 const Promo: FC<IPromoProps> = async ({
   quest: {
-    id, type, description, duration, title, level, peopleCount, translationKey,
+    id, type, duration, level, peopleCount, translationKey,
   },
   locale,
 }) => {

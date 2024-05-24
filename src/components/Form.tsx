@@ -37,9 +37,9 @@ const Form = () => {
     try {
       await createOrder(newOrder);
       router.back();
-      toast((t) => {
-        t.duration = 2000;
-        t.style = {
+      toast((popup) => {
+        popup.duration = 2000;
+        popup.style = {
           padding: 0,
         };
         return (

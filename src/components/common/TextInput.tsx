@@ -1,7 +1,7 @@
 'use client';
 
 import React, { FC } from 'react';
-import { FieldError, UseFormRegister } from 'react-hook-form';
+import { UseFormRegister } from 'react-hook-form';
 import { ValidFieldNames } from '@/interfaces/interfaces';
 
 interface ITextInput {
