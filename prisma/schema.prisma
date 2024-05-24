@@ -8,15 +8,16 @@ datasource db {
 }
 
 model Quest {
-  id          Int    @id @default(autoincrement())
-  title       String
-  description String
-  previewImg  String
-  coverImg    String
-  type        String
-  level       String
-  peopleCount Int[]
-  duration    Int
+  id             Int     @id @default(autoincrement())
+  title          String
+  description    String
+  previewImg     String
+  coverImg       String
+  type           String
+  level          String
+  peopleCount    Int[]
+  duration       Int
+  translationKey String?
 }
 
 model Order {
