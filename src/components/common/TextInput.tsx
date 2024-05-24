@@ -8,7 +8,7 @@ interface ITextInput {
   id: ValidFieldNames,
   label: string,
   placeholder: string
-  error: FieldError | undefined
+  error: string | undefined
   register: UseFormRegister<any>
   valueAsNumber?: boolean
   type?: string
@@ -27,7 +27,7 @@ const TextInput: FC<ITextInput> = ({
         {...attrs}
         className='text-sm w-full h-full bg-transparent px-8 appearance-none outline outline-0 focus:outline-0'
       />
-      {error && <div className='text-orange text-left'>{error.message}</div>}
+      {error && <div className='text-orange text-left'>{error}</div>}
     </div>
   );
 };
