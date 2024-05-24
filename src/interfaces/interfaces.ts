@@ -18,10 +18,7 @@ export interface IQuest {
   level: string
   peopleCount: number[],
   duration: number
-}
-
-export interface IDictionary {
-  [key: string]: string
+  translationKey: string | null
 }
 
 export interface IForm {
