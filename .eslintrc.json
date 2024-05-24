@@ -15,6 +15,13 @@
     "jsx-quotes": ["error", "prefer-single"],
     "react/jsx-pascal-case": "off",
     "react/require-default-props": "off",
-    "no-param-reassign": "off"
+    "no-param-reassign": "off",
+    "react/prop-types": "off",
+    "react/button-has-type": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
+    "no-restricted-syntax": "off",
+    "no-await-in-loop": "off",
+    "max-len": ["error", { "code": 120}]
   }
 }
