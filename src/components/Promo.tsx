@@ -15,7 +15,7 @@ const Promo: FC<IPromoProps> = async ({
   },
   locale,
 }) => {
-  const { t } = await initTranslations(locale, ['quest', 'common']);
+  const { t } = await initTranslations(locale, ['quest', 'common', 'home']);
   const [from, to] = peopleCount;
   const minutes = t('common:minutes');
   const people = t('common:people');
