@@ -78,11 +78,5 @@ export const signInUser = async (email: string, password: string):Promise<void> 
 };
 
 export const logout = async () => {
-  const token = cookies().get(SESSION_COOKIE)?.value;
-  await prisma.session.delete({
-    where: {
-      token,
-    },
-  });
   cookies().delete(SESSION_COOKIE);
 };
