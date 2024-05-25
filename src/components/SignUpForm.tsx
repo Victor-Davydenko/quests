@@ -17,13 +17,14 @@ import { useTranslation } from 'react-i18next';
 const SignUpForm = () => {
   const [error, setError] = useState('');
   const { t } = useTranslation('auth');
+  const { t: tError } = useTranslation('errors');
   const {
     register, handleSubmit, formState: {
       errors, isSubmitting, isValid,
     },
   } = useForm<ISignUpForm>({
     mode: 'onBlur',
-    resolver: zodResolver(signUpValidationSchema),
+    resolver: zodResolver(signUpValidationSchema(tError)),
   });
   const router = useRouter();
   const onFormSubmit = async (formData: ISignUpForm) => {
@@ -43,7 +44,7 @@ const SignUpForm = () => {
     <form className='w-full max-w-[480px] bg-black px-8 pt-8 pb-12 text-center' onSubmit={handleSubmit(onFormSubmit)}>
       <Title level={3} className='text-3xl leading-none font-bold text-white mb-14'>{t('sign_up')}</Title>
       <fieldset>
-        <TextInput id='email' label={t('email')} placeholder={t('email')} register={register} error={errors.password?.message} />
+        <TextInput id='email' label={t('email')} placeholder={t('email')} register={register} error={errors.email?.message} />
         <TextInput id='password' type='password' label={t('password')} placeholder={t('password')} register={register} error={errors.password?.message} />
         <TextInput id='confirmPassword' type='password' label={t('confirm_password')} placeholder={t('confirm_password')} register={register} error={errors.confirmPassword?.message} />
       </fieldset>

@@ -18,13 +18,14 @@ import { useTranslation } from 'react-i18next';
 const SignInForm = () => {
   const [error, setError] = useState('');
   const { t } = useTranslation('auth');
+  const { t: tError } = useTranslation('errors');
   const {
     register, handleSubmit, formState: {
       errors, isSubmitting, isValid,
     },
   } = useForm<ISignInForm>({
     mode: 'onBlur',
-    resolver: zodResolver(signInValidationSchema),
+    resolver: zodResolver(signInValidationSchema(tError)),
   });
 
   const router = useRouter();

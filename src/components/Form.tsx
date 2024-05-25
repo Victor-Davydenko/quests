@@ -18,15 +18,16 @@ import { useTranslation } from 'react-i18next';
 const Form = () => {
   const [error, setError] = useState('');
   const router = useRouter();
+  const { t } = useTranslation('book');
+  const { t: tError } = useTranslation('errors');
   const {
     register, handleSubmit, formState: {
       errors, isSubmitting, isValid,
     },
   } = useForm<IForm>({
     mode: 'onBlur',
-    resolver: zodResolver(formValidationSchema),
+    resolver: zodResolver(formValidationSchema(tError)),
   });
-  const { t } = useTranslation('book');
   const onFormSubmit = async (formData: IForm) => {
     const newOrder = {
       name: formData.name,
