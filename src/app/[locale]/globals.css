@@ -36,6 +36,37 @@
     0% {  transform: rotate(0)}
     100% { transform: rotate(360deg)}
   }
+
+  .react-select-container {
+    .react-select__control {
+      background: #1f1d1d;
+      border: none;
+    }
+    .react-select__value-container {
+      background: #1f1d1d;
+    }
+
+    .react-select__single-value {
+      color: #e6e6e6;
+    }
+
+    .react-select__menu-list {
+      background: #1f1d1d;
+      color: #e6e6e6;
+    }
+
+    .react-select__option {
+      background: #1f1d1d;
+
+      &:active {
+        background: #1f1d1d;
+      }
+    }
+
+    .react-select__indicators {
+      display: none;
+    }
+  }
 }
 
 *, *:after, *:before {

@@ -6,6 +6,9 @@ import { routes } from '@/contstants/constants';
 import { checkSession } from '@/http';
 import LogoutForm from '@/components/LogoutForm';
 import initTranslations from '@/app/i18n';
+import dynamic from 'next/dynamic';
+
+const LangSwitcher = dynamic(() => import('@/components/LangSwitcher'), { ssr: false });
 
 const Header: FC<{ locale: string }> = async ({ locale }): Promise<ReactElement> => {
   const session = await checkSession();
@@ -19,6 +22,7 @@ const Header: FC<{ locale: string }> = async ({ locale }): Promise<ReactElement>
         <Navigation routes={routes} />
         <Link href='tel:0501112222' className='leading-none'>050 111 22 22</Link>
         {logoutBtn}
+        <LangSwitcher />
       </div>
     </header>
   );

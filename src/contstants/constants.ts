@@ -1,4 +1,4 @@
-import { ICategory, IRoute } from '@/interfaces/interfaces';
+import { ICategory, ILangOption, IRoute } from '@/interfaces/interfaces';
 
 export const routes: IRoute[] = [
   { path: '/', title: 'quests' },
@@ -12,6 +12,11 @@ export const categories: ICategory[] = [
   { id: 'mystic', title: 'mystic' },
   { id: 'detective', title: 'detective' },
   { id: 'sci-fi', title: 'sci_fi' },
+];
+
+export const langOptions:ILangOption[] = [
+  { value: 'en', label: 'EN' },
+  { value: 'uk', label: 'UK' },
 ];
 
 export const SESSION_COOKIE = 'quest_session';
