@@ -1,4 +1,3 @@
-import type { Metadata } from 'next';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -10,16 +9,19 @@ import TranslationProvider from '@/components/TranslationProvider';
 import raleway from './font';
 import i18nConfig from '../../../i18nConfig';
 
-export const metadata: Metadata = {
-  title: 'Escape room',
-  description: 'Choose your next quest',
-};
+export async function generateMetadata({ params: { locale } }: { params: { locale: string } }) {
+  const { t } = await initTranslations(locale, ['common']);
+  return {
+    title: t('title'),
+    description: t('choose_your_next_quest'),
+  };
+}
 
 export function generateStaticParams() {
   return i18nConfig.locales.map((locale) => ({ locale }));
 }
 
-const i18nNamespaces = ['home', 'auth', 'book', 'errors'];
+const i18nNamespaces = ['home', 'auth', 'book', 'errors', 'common'];
 
 export default async function RootLayout({
   children,

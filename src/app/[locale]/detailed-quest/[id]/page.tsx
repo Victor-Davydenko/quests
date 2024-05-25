@@ -2,22 +2,24 @@ import React from 'react';
 import Promo from '@/components/Promo';
 import { getSingleQuest } from '@/http';
 import { notFound } from 'next/navigation';
+import initTranslations from '@/app/i18n';
 
-export async function generateMetadata({ params: { id } }: { params: { id: string } }) {
+export async function generateMetadata({ params: { id, locale } }: { params: { id: string, locale: string } }) {
+  const { t } = await initTranslations(locale, ['quest', 'common']);
   if (Number.isNaN(+id)) {
     return {
-      title: 'Не знайдено',
+      title: t('common:not_found'),
     };
   }
   const singleQuest = await getSingleQuest(+id);
   if (singleQuest === null) {
     return {
-      title: 'Не знайдено',
+      title: t('common:not_found'),
     };
   }
   return {
-    title: singleQuest.title,
-    description: singleQuest.description,
+    title: t(`${singleQuest.translationKey}_title`),
+    description: t(`${singleQuest.translationKey}_description`),
   };
 }
 
