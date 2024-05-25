@@ -3,7 +3,7 @@
 import { IOrder, IUser } from '@/interfaces/interfaces';
 import { comparePassword, hashPassword } from '@/utils/password';
 import { cookies } from 'next/headers';
-import { generateExpirationCookieTime, generateSessionCookie } from '@/utils/session';
+import generateSessionCookie from '@/utils/session';
 import { SESSION_COOKIE } from '@/contstants/constants';
 import prisma from '../../prisma';
 
@@ -67,16 +67,11 @@ export const signInUser = async (email: string, password: string):Promise<void> 
   if (!isPasswordCorrect) {
     throw new Error('bad credentials');
   }
-  const session = await prisma.session.create({
-    data: {
-      token: generateSessionCookie(),
-      userId: user.id,
-      expiresAt: generateExpirationCookieTime(1),
-    },
-  });
+
+  const token = generateSessionCookie();
   cookies().set({
     name: SESSION_COOKIE,
-    value: session.token,
+    value: token,
     maxAge: +process.env.COOKIE_MAX_AGE!,
     httpOnly: true,
   });
