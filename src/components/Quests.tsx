@@ -5,8 +5,9 @@ import { getQuests } from '@/http';
 
 interface IQuestsProps {
   filter: string | undefined
+  locale: string
 }
-const Quests: FC<IQuestsProps> = async ({ filter = 'all_quests' }) => {
+const Quests: FC<IQuestsProps> = async ({ filter = 'all_quests', locale }) => {
   const quests = await getQuests();
   let filteredQuests;
   if (!filter) {
@@ -17,7 +18,7 @@ const Quests: FC<IQuestsProps> = async ({ filter = 'all_quests' }) => {
   return (
     <div className='flex flex-wrap gap-8 pb-10'>
       {filteredQuests?.length && filteredQuests
-        .map((quest: IQuest) => <QuestCard key={quest.id} {...quest} />)}
+        .map((quest: IQuest) => <QuestCard key={quest.id} locale={locale} {...quest} />)}
     </div>
   );
 };

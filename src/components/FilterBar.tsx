@@ -4,8 +4,9 @@ import FilterBarItem from '@/components/FilterBarItem';
 
 interface IFilterBarProps {
   filter: string | undefined
+  locale: string
 }
-const FilterBar: FC<IFilterBarProps> = ({ filter }): ReactElement => {
+const FilterBar: FC<IFilterBarProps> = ({ filter, locale }): ReactElement => {
   return (
     <div className='flex items-center gap-x-20 mb-10'>
       {categories.map((category) => (
@@ -13,6 +14,7 @@ const FilterBar: FC<IFilterBarProps> = ({ filter }): ReactElement => {
           key={category.id}
           category={category}
           filter={filter}
+          locale={locale}
         />
       ))}
     </div>

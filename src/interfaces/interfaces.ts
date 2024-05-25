@@ -16,10 +16,51 @@ export interface IQuest {
   coverImg: string
   type: string
   level: string
-  peopleCount: [ number, number ],
+  peopleCount: number[],
   duration: number
+  translationKey: string | null
 }
 
-export interface IDictionary {
-  [key: string]: string
+export interface IForm {
+  name: string
+  phone: string
+  numberOfVisitors: number
+  privateDataAgreement: boolean
+}
+
+export interface ISignUpForm {
+  email: string
+  password: string
+  confirmPassword: string
+}
+
+export interface ISignInForm {
+  email: string
+  password: string
+}
+
+export type ValidFieldNames =
+  | 'name'
+  | 'phone'
+  | 'numberOfVisitors'
+  | 'privateDataAgreement'
+  | 'password'
+  | 'confirmPassword'
+  | 'email';
+
+export interface IOrder {
+  name: string
+  peopleCount: number
+  phone: string
+  isLegal: boolean
+}
+
+export interface IUser {
+  email: string
+  password: string
+}
+
+export interface ILangOption {
+  value: string
+  label: string
 }
