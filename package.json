@@ -13,6 +13,7 @@
     "postinstall": "prisma generate"
   },
   "dependencies": {
+    "@react-google-maps/api": "^2.19.3",
     "@hookform/resolvers": "^3.3.4",
     "@prisma/client": "^5.13.0",
     "@types/i18n": "^0.13.12",
