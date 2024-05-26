@@ -1,35 +1,36 @@
 import Title from '@/components/common/Title';
 import Map from '@/components/Map';
+import initTranslations from '@/app/i18n';
 
-const Page = () => {
+const Page = async ({ params: { locale } }: { params: { locale: string } }) => {
+  const { t } = await initTranslations(locale, ['common', 'home']);
   return (
     <section className='bg-page_bg h-full min-h-screen pt-32 w-full'>
       <div className='container mx-auto max-w-[1200px] px-5'>
-        <Title level={1} className='text-orange text-sm font-medium leading-5'>Квести у Львові</Title>
+        <Title level={1} className='text-orange text-sm font-medium leading-5'>{t('title')}</Title>
         <p
           className='relative text-white font-extrabold text-[64px] mb-12 after:absolute after:content-[" "] after:h-[.5px] after:w-full after:bg-text_white after:left-0 after:-bottom-[40px]'
         >
-          Контакти
+          {t('home:contacts')}
         </p>
         <div className='flex pt-12 text-text_white font-medium gap-x-5'>
           <ul className='pt-2 basis-1/3'>
             <li className='mb-8'>
-              <Title level={3} className='font-semibold block mb-2'>Адреса</Title>
+              <Title level={3} className='font-semibold block mb-2'>{t('address')}</Title>
               <address>
-                Львів,
-                Площа Ринок, 3Б
+                {t('location')}
               </address>
             </li>
             <li className='mb-8'>
-              <Title level={3} className='font-semibold block mb-2'>Години роботи</Title>
-              <span>Щоденно, з 9:00 до 20:00</span>
+              <Title level={3} className='font-semibold block mb-2'>{t('when_open')}</Title>
+              <span>{t('hours_available')}</span>
             </li>
             <li className='mb-8'>
-              <Title level={3} className='font-semibold block mb-2'>Телефон</Title>
+              <Title level={3} className='font-semibold block mb-2'>{t('phone')}</Title>
               <a href='tel: +38 (050) 555-99-55'>+38 (050) 555-99-55</a>
             </li>
             <li className='mb-8'>
-              <Title level={3} className='font-semibold block mb-2'>E-mail</Title>
+              <Title level={3} className='font-semibold block mb-2'>{t('email')}</Title>
               <a href='mailto:lviv.games@game.ua'>lviv.games@game.ua</a>
             </li>
           </ul>

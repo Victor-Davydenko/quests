@@ -38,3 +38,5 @@ export const location = {
   lng: 24.03192517784678,
 };
 export const SESSION_COOKIE = 'quest_session';
+
+export const LOCATION_ICON_URL = '/location_marker.svg';
