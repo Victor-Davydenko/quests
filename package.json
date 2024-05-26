@@ -2,24 +2,45 @@
   "name": "quests",
   "version": "0.1.0",
   "private": true,
+  "prisma": {
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@react-google-maps/api": "^2.19.3",
+    "@hookform/resolvers": "^3.3.4",
+    "@prisma/client": "^5.13.0",
+    "@types/i18n": "^0.13.12",
+    "bcrypt": "^5.1.1",
     "clsx": "^2.1.0",
+    "i18next": "^23.11.5",
+    "i18next-resources-to-backend": "^1.2.1",
     "next": "14.2.2",
+    "next-i18n-router": "^5.4.3",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-hook-form": "^7.51.3",
+    "react-hot-toast": "^2.4.1",
+    "react-i18next": "^14.1.1",
+    "react-select": "^5.8.0",
+    "uuid": "^9.0.1",
+    "validator": "^13.11.0",
+    "zod": "^3.23.5"
   },
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",
-    "@types/node": "^20",
+    "@types/bcrypt": "^5.0.2",
+    "@types/node": "^20.12.12",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/uuid": "^9.0.8",
+    "@types/validator": "^13.11.9",
     "@typescript-eslint/eslint-plugin": "^7.7.0",
     "@typescript-eslint/parser": "^7.7.0",
     "eslint": "^8",
@@ -27,7 +48,9 @@
     "eslint-config-airbnb-typescript": "^18.0.0",
     "eslint-config-next": "14.2.2",
     "postcss": "^8",
+    "prisma": "^5.13.0",
     "tailwindcss": "^3.4.1",
-    "typescript": "^5"
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
   }
 }
