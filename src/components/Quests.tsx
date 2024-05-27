@@ -18,7 +18,7 @@ const Quests: FC<IQuestsProps> = async ({ filter = 'all_quests', locale }) => {
   return (
     <div className='flex flex-wrap gap-8 pb-10'>
       {filteredQuests?.length && filteredQuests
-        .map((quest: IQuest) => <QuestCard key={quest.id} locale={locale} {...quest} />)}
+        .map((quest: IQuest, index: number) => <QuestCard index={index} key={quest.id} locale={locale} {...quest} />)}
     </div>
   );
 };
