@@ -39,6 +39,7 @@ const LangSwitcher: FC = (): ReactElement => {
       onChange={handleChange}
       className='react-select-container'
       classNamePrefix='react-select'
+      aria-labelledby='lang switcher'
     />
   );
 };
