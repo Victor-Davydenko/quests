@@ -8,17 +8,18 @@ import initTranslations from '@/app/i18n';
 
 interface IQuestCard extends IQuest {
   locale: string
+  index: number
 }
 const QuestCard: FC<IQuestCard> = async ({
-  id, previewImg, level, peopleCount, translationKey, locale,
+  id, previewImg, level, peopleCount, translationKey, locale, index,
 }): Promise<ReactElement> => {
   const [from, to] = peopleCount;
   const { t } = await initTranslations(locale, ['quest', 'common']);
   const people = t('common:people');
   return (
-    <Link href={`detailed-quest/${id}`} className='relative max-w-[345px]'>
+    <Link href={`detailed-quest/${id}`} className='relative max-w-[345px] basis-[100%] min-h-[230px]'>
       <div className='absolute rounded bg-card_bg shadow-card_shadow w-full h-full' />
-      <Image src={`/${previewImg}`} alt='card' width={345} height={230} className='rounded' />
+      <Image src={`/${previewImg}`} alt='card' fill sizes='100%' className='rounded w-auto h-auto' priority={index <= 6} />
       <Title level={2} className='absolute left-5 bottom-16 font-bold text-white text-2xl'>{t(`${translationKey}_title`)}</Title>
       <div className='absolute flex items-center gap-x-4 left-5 bottom-8 font-medium text-text_white text-sm'>
         <span className='flex items-center'>
