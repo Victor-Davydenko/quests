@@ -11,7 +11,7 @@ interface IQuestCard extends IQuest {
   index: number
 }
 const QuestCard: FC<IQuestCard> = async ({
-  id, previewImg, level, peopleCount, translationKey, locale, index
+  id, previewImg, level, peopleCount, translationKey, locale, index,
 }): Promise<ReactElement> => {
   const [from, to] = peopleCount;
   const { t } = await initTranslations(locale, ['quest', 'common']);
