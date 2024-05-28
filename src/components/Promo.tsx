@@ -20,21 +20,21 @@ const Promo: FC<IPromoProps> = async ({
   const minutes = t('common:minutes');
   const people = t('common:people');
   return (
-    <article className='w-full max-w-[600px]'>
-      <Title level={1} className='text-sm text-orange -ml-[30px]'>{t(`home:${type}`)}</Title>
-      <Title level={2} className='text-white text-[92px] font-extrabold leading-none -ml-[30px] mb-8'>{t(`${translationKey}_title`)}</Title>
-      <ul className='flex gap-x-12 mb-5'>
+    <article className='w-full max-w-[600px] pb-8'>
+      <Title level={1} className='text-sm text-orange md:-ml-[30px]'>{t(`home:${type}`)}</Title>
+      <Title level={2} className='text-white text-7xl md:text-[92px] font-extrabold leading-none md:-ml-[30px] mb-8'>{t(`${translationKey}_title`)}</Title>
+      <ul className='sm:flex gap-x-12 mb-5'>
         <li className='flex gap-x-1 items-center'>
           <Icons.clock />
-          <span>{`${duration} ${minutes}`}</span>
+          <span className='text-nowrap'>{`${duration} ${minutes}`}</span>
         </li>
         <li className='flex gap-x-1 items-center'>
           <Icons.person />
-          <span>{`${from} - ${to} ${people}`}</span>
+          <span className='text-nowrap'>{`${from} - ${to} ${people}`}</span>
         </li>
         <li className='flex gap-x-1 items-center'>
           <Icons.puzzle />
-          <span>{t(`common:${level}`)}</span>
+          <span className='text-nowrap'>{t(`common:${level}`)}</span>
         </li>
       </ul>
       <p className='mb-10'>{t(`${translationKey}_description`)}</p>
