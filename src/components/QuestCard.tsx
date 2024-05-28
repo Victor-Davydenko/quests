@@ -17,8 +17,8 @@ const QuestCard: FC<IQuestCard> = async ({
   const { t } = await initTranslations(locale, ['quest', 'common']);
   const people = t('common:people');
   return (
-    <Link href={`detailed-quest/${id}`} className='relative max-w-[345px] basis-[100%] min-h-[232px]'>
-      <div className='absolute rounded bg-card_bg shadow-card_shadow w-full h-full' />
+    <Link href={`detailed-quest/${id}`} className='relative max-w-[345px] w-full min-h-[232px]'>
+      <div className='absolute rounded bg-card_bg shadow-card_shadow w-full h-auto' />
       <Image src={`/${previewImg}`} alt='card' fill sizes='100%' className='rounded w-auto h-auto' priority={index <= 6} />
       <Title level={2} className='absolute left-5 bottom-16 font-bold text-white text-2xl'>{t(`${translationKey}_title`)}</Title>
       <div className='absolute flex items-center gap-x-4 left-5 bottom-8 font-medium text-text_white text-sm'>

@@ -16,7 +16,7 @@ const Quests: FC<IQuestsProps> = async ({ filter = 'all_quests', locale }) => {
     filteredQuests = filter === 'all_quests' ? quests : quests.filter((quest) => quest.type === filter);
   }
   return (
-    <div className='flex flex-wrap gap-8 pb-10'>
+    <div className='flex flex-col items-center justify-center md:flex-row flex-wrap gap-8 pb-10'>
       {filteredQuests?.length && filteredQuests
         .map((quest: IQuest, index: number) => <QuestCard index={index} key={quest.id} locale={locale} {...quest} />)}
     </div>
