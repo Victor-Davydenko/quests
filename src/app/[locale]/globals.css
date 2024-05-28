@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer components {
+  .filter_scroll {
+    width: calc(100vw - 40px);
+  }
+
   .filter_item_active:after {
     content: '';
     position: absolute;

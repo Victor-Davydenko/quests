@@ -16,7 +16,7 @@ const FilterBarItem: FC<ICategoryProps> = async ({ category: { id, title }, filt
   return (
     <Link href={`/?filter=${id}`} scroll={false} className='flex items-center text-text_white text-sm gap-x-2'>
       <Icon className='w-10 h-auto' />
-      <span className={clsx({ filter_item_active: id === filter }, 'cursor-pointer relative')}>{t(title)}</span>
+      <span className={clsx({ filter_item_active: id === filter }, 'cursor-pointer relative text-nowrap')}>{t(title)}</span>
     </Link>
   );
 };

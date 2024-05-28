@@ -13,8 +13,8 @@ const Page = async ({ params: { locale } }: { params: { locale: string } }) => {
         >
           {t('home:contacts')}
         </p>
-        <div className='flex pt-12 text-text_white font-medium gap-x-5'>
-          <ul className='pt-2 basis-1/3'>
+        <div className='lg:flex pt-12 text-text_white font-medium gap-x-5'>
+          <ul className='pt-2 lg:basis-1/3'>
             <li className='mb-8'>
               <Title level={3} className='font-semibold block mb-2'>{t('address')}</Title>
               <address>
