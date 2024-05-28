@@ -37,9 +37,9 @@ const LangSwitcher: FC = (): ReactElement => {
       defaultValue={{ value: currentLocale, label: currentLocale }}
       options={langOptions}
       onChange={handleChange}
-      className='react-select-container'
+      className='react-select-container pr-4 md:pr-0'
       classNamePrefix='react-select'
-      aria-labelledby='lang switcher'
+      aria-label='language_switcher'
     />
   );
 };
