@@ -5,11 +5,11 @@ import initTranslations from '@/app/i18n';
 const Page = async ({ params: { locale } }: { params: { locale: string } }) => {
   const { t } = await initTranslations(locale, ['common', 'home']);
   return (
-    <section className='bg-page_bg h-full min-h-screen pt-32 w-full'>
+    <section className='bg-page_bg h-full min-h-screen pt-32 pb-20 w-full'>
       <div className='container mx-auto max-w-[1200px] px-5'>
         <Title level={1} className='text-orange text-sm font-medium leading-5'>{t('title')}</Title>
         <p
-          className='relative text-white font-extrabold text-[64px] mb-12 after:absolute after:content-[" "] after:h-[.5px] after:w-full after:bg-text_white after:left-0 after:-bottom-[40px]'
+          className='relative text-white font-extrabold text-3xl sm:text-5xl md:text-[64px] mb-3 md:mb-12 after:absolute after:content-[" "] after:h-[.5px] after:w-full after:bg-text_white after:left-0 after:-bottom-[20px] md:after:-bottom-[40px]'
         >
           {t('home:contacts')}
         </p>
@@ -34,7 +34,7 @@ const Page = async ({ params: { locale } }: { params: { locale: string } }) => {
               <a href='mailto:lviv.games@game.ua'>lviv.games@game.ua</a>
             </li>
           </ul>
-          <div className='basis-2/3 rounded-[30px] overflow-hidden'>
+          <div className='basis-2/3 rounded-[30px] overflow-hidden h-[500px] lg:min-h-fit lg:h-auto'>
             <Map />
           </div>
         </div>
