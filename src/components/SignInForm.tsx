@@ -34,7 +34,7 @@ const SignInForm = () => {
       await signInUser(formData.email, formData.password);
       router.push('/');
     } catch (e) {
-      setError('password', { type: (e as UserApiError).type, message: tError((e as UserApiError).message) });
+      setError('password', { type: (e as UserApiError).type, message: tError((e as UserApiError).digest) });
     }
   };
   return (

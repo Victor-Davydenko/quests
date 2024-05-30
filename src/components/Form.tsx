@@ -48,7 +48,7 @@ const Form = () => {
         );
       });
     } catch (e) {
-      setError('privateDataAgreement', { type: (e as ServerError).type, message: tError((e as ServerError).message) });
+      setError('privateDataAgreement', { type: (e as ServerError).type, message: tError((e as ServerError).digest) });
     }
   };
   return (
