@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
@@ -14,14 +14,14 @@ import { IForm } from '@/interfaces/interfaces';
 import { createOrder } from '@/http';
 import formValidationSchema from '@/formValidation/formValidation';
 import { useTranslation } from 'react-i18next';
+import ServerError from '@/exception/serverError';
 
 const Form = () => {
-  const [error, setError] = useState('');
   const router = useRouter();
   const { t } = useTranslation('book');
   const { t: tError } = useTranslation('errors');
   const {
-    register, handleSubmit, formState: {
+    register, handleSubmit, setError, formState: {
       errors, isSubmitting, isValid,
     },
   } = useForm<IForm>({
@@ -44,14 +44,13 @@ const Form = () => {
           padding: 0,
         };
         return (
-          <div className='flex p-4 text-xl text-orange bg-page_bg'>Замовлення прийнято, наш менеджер вже телефонує вам</div>
+          <div className='flex p-4 text-xl text-orange bg-page_bg'>{t('booking_success')}</div>
         );
       });
     } catch (e) {
-      setError((e as Error).message);
+      setError('privateDataAgreement', { type: (e as ServerError).type, message: tError((e as ServerError).message) });
     }
   };
-  if (error) throw new Error(error);
   return (
     <form className='w-full max-w-[480px] bg-black px-8 pt-8 pb-12 text-center' onSubmit={handleSubmit(onFormSubmit)}>
       <Title level={3} className='text-3xl leading-none font-bold text-white mb-14'>{t('leave_request')}</Title>
