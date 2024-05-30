@@ -1,9 +1,9 @@
 class ServerError extends Error {
-  constructor(public status: number, public message: string, public type: string = 'serverError') {
-    super(message);
+  constructor(public status: number, public digest: string, public type: string = 'serverError') {
+    super(digest);
     this.status = status;
-    this.message = message;
     this.type = type;
+    this.digest = digest;
   }
 
   static UnknownError() {

@@ -36,7 +36,7 @@ const SignUpForm = () => {
       await signUpUser(user);
       router.push('/');
     } catch (e) {
-      setError('email', { type: (e as UserApiError).type, message: tError((e as UserApiError).message) }, { shouldFocus: true });
+      setError('email', { type: (e as UserApiError).type, message: tError((e as UserApiError).digest) }, { shouldFocus: true });
     }
   };
   return (
