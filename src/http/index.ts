@@ -5,20 +5,30 @@ import { comparePassword, hashPassword } from '@/utils/password';
 import { cookies } from 'next/headers';
 import generateSessionCookie from '@/utils/session';
 import { SESSION_COOKIE } from '@/contstants/constants';
+import UserApiError from '@/exception/userException';
+import ServerError from '@/exception/serverError';
 import prisma from '../../prisma';
 
 export const getQuests = async () => {
-  const quests = await prisma.quest.findMany();
-  return quests;
+  try {
+    const quests = await prisma.quest.findMany();
+    return quests;
+  } catch (e) {
+    throw ServerError.UnknownError();
+  }
 };
 
 export const getSingleQuest = async (id: number) => {
-  const quest = await prisma.quest.findUnique({
-    where: {
-      id,
-    },
-  });
-  return quest;
+  try {
+    const quest = await prisma.quest.findUnique({
+      where: {
+        id,
+      },
+    });
+    return quest;
+  } catch (e) {
+    throw ServerError.UnknownError();
+  }
 };
 
 export const createOrder = async (orderData: IOrder) => {
@@ -27,7 +37,7 @@ export const createOrder = async (orderData: IOrder) => {
       data: orderData,
     });
   } catch (e) {
-    throw new Error((e as Error).message);
+    throw ServerError.UnknownError();
   }
 };
 
@@ -39,7 +49,7 @@ export const signUpUser = async (user: IUser):Promise<void> => {
     },
   });
   if (candidate) {
-    throw new Error('user already exists');
+    throw UserApiError.UserAlreadyExists();
   }
   try {
     const hashedPassword = await hashPassword(password);
@@ -50,7 +60,7 @@ export const signUpUser = async (user: IUser):Promise<void> => {
       },
     });
   } catch (e) {
-    throw new Error((e as Error).message);
+    throw ServerError.UnknownError();
   }
 };
 
@@ -61,11 +71,11 @@ export const signInUser = async (email: string, password: string):Promise<void> 
     },
   });
   if (!user) {
-    throw new Error('bad credentials');
+    throw UserApiError.BadCredentials();
   }
-  const isPasswordCorrect = comparePassword(password, user.password);
+  const isPasswordCorrect = await comparePassword(password, user.password);
   if (!isPasswordCorrect) {
-    throw new Error('bad credentials');
+    throw UserApiError.BadCredentials();
   }
 
   const token = generateSessionCookie();

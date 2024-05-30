@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -14,13 +14,13 @@ import { signInValidationSchema } from '@/formValidation/formValidation';
 import { signInUser } from '@/http';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
+import UserApiError from '@/exception/userException';
 
 const SignInForm = () => {
-  const [error, setError] = useState('');
   const { t } = useTranslation('auth');
   const { t: tError } = useTranslation('errors');
   const {
-    register, handleSubmit, formState: {
+    register, handleSubmit, setError, formState: {
       errors, isSubmitting, isValid,
     },
   } = useForm<ISignInForm>({
@@ -34,10 +34,9 @@ const SignInForm = () => {
       await signInUser(formData.email, formData.password);
       router.push('/');
     } catch (e) {
-      setError((e as Error).message);
+      setError('password', { type: (e as UserApiError).type, message: tError((e as UserApiError).message) });
     }
   };
-  if (error) throw new Error(error);
   return (
     <form className='w-full max-w-[480px] bg-black px-8 pt-8 pb-12 text-center' onSubmit={handleSubmit(onFormSubmit)}>
       <Title level={3} className='text-3xl leading-none font-bold text-white mb-14'>{t('login_btn')}</Title>
