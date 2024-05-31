@@ -35,7 +35,7 @@ const Page = async ({ params: { locale } }: { params: { locale: string } }) => {
             </li>
           </ul>
           <div className='basis-2/3 rounded-[30px] overflow-hidden h-[500px] lg:min-h-fit lg:h-auto'>
-            <Map />
+            <Map locale={locale} />
           </div>
         </div>
       </div>
