@@ -1,25 +1,19 @@
 'use client';
 
 import { FC } from 'react';
-import { GoogleMap, Marker } from '@react-google-maps/api';
-import Loading from '@/app/[locale]/loading';
-import {
-  defaultMapOptions, mapContainerStyle, location, LOCATION_ICON_URL,
-} from '@/contstants/constants';
-import useMap from '@/hooks/useMap';
+import { APIProvider, AdvancedMarker, Map } from '@vis.gl/react-google-maps';
+import { defaultMapOptions, location, LOCATION_ICON_URL } from '@/contstants/constants';
 
-const Map: FC = () => {
-  const isLoaded = useMap();
-  return isLoaded ? (
-    <GoogleMap
-      mapContainerStyle={mapContainerStyle}
-      center={location}
-      zoom={18}
-      options={defaultMapOptions}
-    >
-      <Marker position={location} icon={{ url: LOCATION_ICON_URL }} />
-    </GoogleMap>
-  ) : <Loading />;
+const GoogleMap: FC<{ locale: string }> = ({ locale }: { locale: string }) => {
+  return (
+    <APIProvider apiKey={process.env.NEXT_PUBLIC_MAP_API_KEY as string} language={locale}>
+      <Map center={location} defaultZoom={18} mapId={process.env.NEXT_PUBLIC_MAP_ID} {...defaultMapOptions}>
+        <AdvancedMarker position={location}>
+          <img src={LOCATION_ICON_URL} alt='location marker' />
+        </AdvancedMarker>
+      </Map>
+    </APIProvider>
+  );
 };
 
-export default Map;
+export default GoogleMap;
