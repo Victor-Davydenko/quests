@@ -10,15 +10,16 @@ import { IRoute } from '@/interfaces/interfaces';
 interface INavProps {
   routes: IRoute[]
   styles: { display: string }
+  closeNavHandler: () => void
 }
-const Navigation: FC<INavProps> = ({ routes, styles }): ReactElement => {
+const Navigation: FC<INavProps> = ({ routes, styles, closeNavHandler }): ReactElement => {
   const pathname = usePathname();
   const { t } = useTranslation(['home', 'auth']);
   return (
     <nav style={styles} className='hidden md:block'>
       <ul className='mt-4 md:mt-0 md:flex gap-x-12'>
         {routes.map(({ path, title }) => (
-          <li key={path} className='text-center md:text-left mb-3 md:mb-0'>
+          <li key={path} className='text-center md:text-left mb-3 md:mb-0' onClick={closeNavHandler}>
             <Link href={path} className={clsx({ 'text-orange': path === pathname }, 'tracking-widest')}>{t(title)}</Link>
           </li>
         ))}
